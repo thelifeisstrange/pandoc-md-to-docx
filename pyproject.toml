@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "md-to-docx"
+version = "0.2.0"
+description = "Convert Markdown files to Word (.docx) documents via Pandoc"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Yogesh Kulkarni" }]
+dependencies = [
+    "pypandoc>=1.13",
+]
+
+[project.optional-dependencies]
+binary = ["pypandoc_binary>=1.13"]
+dev = [
+    "pypandoc_binary>=1.13",
+    "pytest>=7.0",
+]
+
+[project.scripts]
+md-to-docx = "md_to_docx.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
