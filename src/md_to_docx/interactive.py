@@ -1,11 +1,21 @@
 from __future__ import annotations
 
-import curses
+import sys
 from collections.abc import Sequence
 
 
 def select_files_interactive(files: Sequence[str]) -> list[str]:
     if not files:
+        return []
+
+    try:
+        import curses
+    except ImportError:
+        print(
+            "Interactive mode is not available: this Python build has no curses support "
+            "(common on Windows). Pass .md file paths on the command line instead.",
+            file=sys.stderr,
+        )
         return []
 
     def menu(stdscr):

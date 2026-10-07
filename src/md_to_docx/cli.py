@@ -16,7 +16,6 @@ from md_to_docx.converter import (
     OnExists,
     convert_md_to_docx,
 )
-from md_to_docx.interactive import select_files_interactive
 from md_to_docx.resources import bundled_reference_doc
 
 
@@ -174,6 +173,8 @@ def main(argv: Optional[list[str]] = None) -> int:
     )
 
     if not args.input:
+        from md_to_docx.interactive import select_files_interactive
+
         md_files = _collect_markdown_files(".", recursive=args.recursive)
         if not md_files:
             print("No Markdown (.md) files found.", file=sys.stderr)
