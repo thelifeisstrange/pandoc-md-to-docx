@@ -31,5 +31,5 @@ This tool is a thin wrapper around [Pandoc](https://pandoc.org/). Word output qu
 
 ## Pandoc installation
 
-- Without system Pandoc, install the optional binary extra: `pip install "md-to-docx[binary]"`.
+- Without system Pandoc, install the optional binary extra: `pip install "pandoc-md-to-docx[binary]"`.
 - CI and tests assume Pandoc is available (via `pypandoc_binary` in dev dependencies).

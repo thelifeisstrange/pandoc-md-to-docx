@@ -3,14 +3,23 @@ requires = ["setuptools>=61", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "md-to-docx"
-version = "0.2.0"
-description = "Convert Markdown files to Word (.docx) documents via Pandoc"
+name = "pandoc-md-to-docx"
+version = "0.2.2"
+description = "CLI to convert Markdown to Word (.docx) with correct image paths, GFM support, and bundled Pandoc."
 readme = "README.md"
 requires-python = ">=3.9"
 license = { text = "MIT" }
 authors = [{ name = "Yogesh Kulkarni" }]
-keywords = ["markdown", "docx", "word", "pandoc", "converter"]
+keywords = [
+    "markdown",
+    "docx",
+    "word",
+    "pandoc",
+    "converter",
+    "gfm",
+    "documentation",
+    "export",
+]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Environment :: Console",
@@ -39,7 +48,9 @@ dev = [
 
 [project.urls]
 Homepage = "https://github.com/thelifeisstrange/md-to-docx"
+Documentation = "https://github.com/thelifeisstrange/md-to-docx#readme"
 Repository = "https://github.com/thelifeisstrange/md-to-docx"
+Issues = "https://github.com/thelifeisstrange/md-to-docx/issues"
 Changelog = "https://github.com/thelifeisstrange/md-to-docx/blob/main/CHANGELOG.md"
 
 [project.scripts]

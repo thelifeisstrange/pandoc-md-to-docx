@@ -156,7 +156,7 @@ def convert_md_to_docx(input_file: str, options: Optional[ConvertOptions] = None
     except OSError as e:
         raise ConversionError(
             f"Conversion failed: {e}. "
-            "Install Pandoc on your system or pip install 'md-to-docx[binary]'."
+            "Install Pandoc on your system or pip install 'pandoc-md-to-docx[binary]'."
         ) from e
     except RuntimeError as e:
         raise ConversionError(f"Conversion failed: {e}") from e

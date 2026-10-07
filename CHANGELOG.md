@@ -5,6 +5,20 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.2] - 2025-10-08
+
+### Changed
+
+- README rewritten for clarity (features, images/links, GitHub/PyPI links, PyPI-friendly URLs).
+- PyPI metadata: longer summary, Documentation and Issues project URLs.
+- Public docs only under `docs/` (`LIMITATIONS.md`); maintainer publishing notes moved to gitignored `docs/private/`.
+
+## [0.2.1] - 2025-10-06
+
+### Changed
+
+- PyPI distribution renamed to **`pandoc-md-to-docx`** (`md-to-docx` on PyPI is another project). The CLI command is still **`md-to-docx`**.
+
 ## [0.2.0] - 2025-10-06
 
 ### Added

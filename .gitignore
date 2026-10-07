@@ -19,3 +19,14 @@ build/
 # Local editor / IDE
 .idea/
 .vscode/
+
+# Secrets and maintainer-only (never publish)
+.env
+.env.*
+!.env.example
+docs/private/
+
+# Personal notes
+*.local.md
+MAINTAINER.md
+notes/
