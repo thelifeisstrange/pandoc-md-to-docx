@@ -10,6 +10,19 @@ readme = "README.md"
 requires-python = ">=3.9"
 license = { text = "MIT" }
 authors = [{ name = "Yogesh Kulkarni" }]
+keywords = ["markdown", "docx", "word", "pandoc", "converter"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Text Processing :: Markup",
+]
 dependencies = [
     "pypandoc>=1.13",
 ]
@@ -19,7 +32,15 @@ binary = ["pypandoc_binary>=1.13"]
 dev = [
     "pypandoc_binary>=1.13",
     "pytest>=7.0",
+    "ruff>=0.8",
+    "pre-commit>=3.0",
+    "build>=1.0",
 ]
+
+[project.urls]
+Homepage = "https://github.com/thelifeisstrange/md-to-docx"
+Repository = "https://github.com/thelifeisstrange/md-to-docx"
+Changelog = "https://github.com/thelifeisstrange/md-to-docx/blob/main/CHANGELOG.md"
 
 [project.scripts]
 md-to-docx = "md_to_docx.cli:main"
@@ -27,5 +48,16 @@ md-to-docx = "md_to_docx.cli:main"
 [tool.setuptools.packages.find]
 where = ["src"]
 
+[tool.setuptools.package-data]
+md_to_docx = ["templates/*.docx"]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+ignore = ["UP045"]

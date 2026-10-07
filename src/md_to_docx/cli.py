@@ -4,11 +4,28 @@ import argparse
 import glob
 import os
 import sys
-from typing import Iterable, Optional
+from collections.abc import Iterable
+from typing import Optional
 
 from md_to_docx import __version__
-from md_to_docx.converter import ConversionError, ConvertOptions, OnExists, convert_md_to_docx
+from md_to_docx.converter import (
+    DEFAULT_FROM_FORMAT,
+    SUPPORTED_FROM_FORMATS,
+    ConversionError,
+    ConvertOptions,
+    OnExists,
+    convert_md_to_docx,
+)
 from md_to_docx.interactive import select_files_interactive
+from md_to_docx.resources import bundled_reference_doc
+
+
+def _resolve_reference_doc(path: Optional[str]) -> Optional[str]:
+    if path is None:
+        return None
+    if path in ("bundled", "default"):
+        return str(bundled_reference_doc())
+    return path
 
 
 def _collect_markdown_files(pattern: str, recursive: bool) -> list[str]:
@@ -98,9 +115,22 @@ def build_parser() -> argparse.ArgumentParser:
         help="With no inputs, scan current directory recursively for .md files (interactive).",
     )
     parser.add_argument(
+        "--from",
+        dest="from_format",
+        default=DEFAULT_FROM_FORMAT,
+        choices=sorted(SUPPORTED_FROM_FORMATS),
+        help=(
+            f"Pandoc input format (default: {DEFAULT_FROM_FORMAT}). "
+            "Use gfm for GitHub-flavored Markdown."
+        ),
+    )
+    parser.add_argument(
         "--reference-doc",
         metavar="PATH",
-        help="Pandoc reference .docx for styles.",
+        help=(
+            "Pandoc reference .docx for Word styles. "
+            "Use 'bundled' for the package default template."
+        ),
     )
     parser.add_argument(
         "--toc",
@@ -127,13 +157,18 @@ def main(argv: Optional[list[str]] = None) -> int:
 
     on_exists = _on_exists_from_args(args)
     if sum([args.force, args.skip_existing, args.rename_on_exists]) > 1:
-        print("Error: use only one of --force, --skip-existing, or --rename-on-exists.", file=sys.stderr)
+        print(
+            "Error: use only one of --force, --skip-existing, or --rename-on-exists.",
+            file=sys.stderr,
+        )
         return 2
 
+    reference_doc = _resolve_reference_doc(args.reference_doc)
     base_options = ConvertOptions(
         output_dir=args.output_dir,
         on_exists=on_exists,
-        reference_doc=args.reference_doc,
+        from_format=args.from_format,
+        reference_doc=reference_doc,
         toc=args.toc,
         toc_depth=args.toc_depth,
     )
@@ -154,14 +189,18 @@ def main(argv: Optional[list[str]] = None) -> int:
             output_file=args.output,
             output_dir=args.output_dir,
             on_exists=on_exists,
-            reference_doc=args.reference_doc,
+            from_format=args.from_format,
+            reference_doc=reference_doc,
             toc=args.toc,
             toc_depth=args.toc_depth,
         )
         return _convert_many([args.input[0]], options)
 
     if args.output:
-        print("Warning: --output is ignored when multiple input files are provided.", file=sys.stderr)
+        print(
+            "Warning: --output is ignored when multiple input files are provided.",
+            file=sys.stderr,
+        )
     return _convert_many(args.input, base_options)
 
 

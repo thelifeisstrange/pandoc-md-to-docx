@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import curses
-from typing import Sequence
+from collections.abc import Sequence
 
 
 def select_files_interactive(files: Sequence[str]) -> list[str]:
@@ -28,7 +28,7 @@ def select_files_interactive(files: Sequence[str]) -> list[str]:
             stdscr.addstr(
                 0,
                 0,
-                "Select Markdown files to convert (SPACE to select, ENTER to confirm, ESC to cancel):\n\n",
+                "Select Markdown files (SPACE select, ENTER confirm, ESC cancel):\n\n",
             )
 
             for idx, item in enumerate(options):

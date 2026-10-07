@@ -13,6 +13,7 @@ build/
 .mypy_cache/
 .ruff_cache/
 *.docx
+!src/md_to_docx/templates/*.docx
 .DS_Store
 
 # Local editor / IDE

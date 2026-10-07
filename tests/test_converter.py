@@ -6,6 +6,7 @@ import zipfile
 import pytest
 
 from md_to_docx.converter import ConversionError, ConvertOptions, OnExists, convert_md_to_docx
+from md_to_docx.resources import bundled_reference_doc
 
 FIXTURES = os.path.join(os.path.dirname(__file__), "fixtures")
 
@@ -48,6 +49,46 @@ def test_skip_existing(tmp_path):
             src,
             ConvertOptions(output_file=str(out), on_exists=OnExists.SKIP),
         )
+
+
+def test_convert_with_gfm(tmp_path):
+    src = os.path.join(FIXTURES, "gfm_sample.md")
+    out = tmp_path / "gfm.docx"
+    convert_md_to_docx(
+        src,
+        ConvertOptions(output_file=str(out), on_exists=OnExists.REPLACE, from_format="gfm"),
+    )
+    assert out.is_file()
+
+
+def test_convert_with_toc(tmp_path):
+    src = os.path.join(FIXTURES, "sample.md")
+    out = tmp_path / "toc.docx"
+    convert_md_to_docx(
+        src,
+        ConvertOptions(output_file=str(out), on_exists=OnExists.REPLACE, toc=True, toc_depth=2),
+    )
+    with zipfile.ZipFile(out) as zf:
+        doc_xml = zf.read("word/document.xml").decode("utf-8")
+        assert "TOC" in doc_xml or "fldChar" in doc_xml
+
+
+def test_bundled_reference_doc_exists():
+    assert bundled_reference_doc().is_file()
+
+
+def test_convert_with_bundled_reference(tmp_path):
+    src = os.path.join(FIXTURES, "sample.md")
+    out = tmp_path / "styled.docx"
+    convert_md_to_docx(
+        src,
+        ConvertOptions(
+            output_file=str(out),
+            on_exists=OnExists.REPLACE,
+            reference_doc=str(bundled_reference_doc()),
+        ),
+    )
+    assert out.is_file()
 
 
 def test_output_dir_created(tmp_path):

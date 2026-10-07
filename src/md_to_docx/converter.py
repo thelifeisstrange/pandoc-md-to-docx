@@ -20,11 +20,25 @@ class ConversionError(Exception):
     """Raised when conversion cannot be completed."""
 
 
+DEFAULT_FROM_FORMAT = "markdown"
+
+SUPPORTED_FROM_FORMATS = frozenset(
+    {
+        "markdown",
+        "gfm",
+        "commonmark",
+        "commonmark_x",
+        "markdown_strict",
+    }
+)
+
+
 @dataclass
 class ConvertOptions:
     output_file: Optional[str] = None
     output_dir: Optional[str] = None
     on_exists: OnExists = OnExists.PROMPT
+    from_format: str = DEFAULT_FROM_FORMAT
     reference_doc: Optional[str] = None
     toc: bool = False
     toc_depth: Optional[int] = None
@@ -72,7 +86,9 @@ def _pick_output_if_exists(output_file: str, on_exists: OnExists) -> Optional[st
 
     print(f"Warning: The file '{output_file}' already exists.")
     while True:
-        choice = input("Do you want to (r)eplace it, (c)reate new, or (s)kip? [r/c/s]: ").strip().lower()
+        choice = input(
+            "Do you want to (r)eplace it, (c)reate new, or (s)kip? [r/c/s]: "
+        ).strip().lower()
         if choice == "r":
             return output_file
         if choice == "c":
@@ -121,12 +137,19 @@ def convert_md_to_docx(input_file: str, options: Optional[ConvertOptions] = None
     if output_file is None:
         raise ConversionError(f"Skipped '{input_file}' (output already exists).")
 
+    if options.from_format not in SUPPORTED_FROM_FORMATS:
+        raise ConversionError(
+            f"Unsupported input format '{options.from_format}'. "
+            f"Choose from: {', '.join(sorted(SUPPORTED_FROM_FORMATS))}."
+        )
+
     extra_args = _pandoc_extra_args(input_file, options)
 
     try:
         pypandoc.convert_file(
             input_file,
             "docx",
+            format=options.from_format,
             outputfile=output_file,
             extra_args=extra_args,
         )
