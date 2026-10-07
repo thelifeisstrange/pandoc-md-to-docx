@@ -1,6 +1,6 @@
 """Markdown to Word (.docx) conversion."""
 
-__version__ = "0.2.2"
+__version__ = "0.2.3"
 
 from md_to_docx.converter import ConversionError, convert_md_to_docx
 
