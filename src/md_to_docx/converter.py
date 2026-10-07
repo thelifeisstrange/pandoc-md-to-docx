@@ -86,9 +86,9 @@ def _pick_output_if_exists(output_file: str, on_exists: OnExists) -> Optional[st
 
     print(f"Warning: The file '{output_file}' already exists.")
     while True:
-        choice = input(
-            "Do you want to (r)eplace it, (c)reate new, or (s)kip? [r/c/s]: "
-        ).strip().lower()
+        choice = (
+            input("Do you want to (r)eplace it, (c)reate new, or (s)kip? [r/c/s]: ").strip().lower()
+        )
         if choice == "r":
             return output_file
         if choice == "c":
