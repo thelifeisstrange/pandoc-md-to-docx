@@ -65,7 +65,7 @@ For each input file, paths are resolved from **that file’s directory**, not fr
 
 HTTPS images are fetched when Pandoc can reach them. Markdown links become clickable links in Word.
 
-For edge cases and limits, see [Limitations](https://github.com/thelifeisstrange/pandoc-md-to-docx/blob/main/docs/LIMITATIONS.md) on GitHub.
+**Good to know:** `<!-- TODO -->` HTML comments are dropped in Word (use visible Markdown for reminders). The tool does not merge chapters into one file—combine to a single `.md` first if you need one `.docx`. See [Limitations](https://github.com/thelifeisstrange/pandoc-md-to-docx/blob/main/docs/LIMITATIONS.md) for more.
 
 ---
 

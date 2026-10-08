@@ -2,6 +2,12 @@
 
 This tool is a thin wrapper around [Pandoc](https://pandoc.org/). Word output quality and supported syntax depend on your Pandoc version and the input format you choose (`--from`).
 
+## Behavior to know (not bugs)
+
+- **HTML comments** such as `<!-- TODO: fix citation -->` do **not** appear in Word. That is normal Pandoc behavior. If you need reminders in the exported document, write them as visible Markdown (e.g. a blockquote or `**TODO:** …`) instead of HTML comments.
+- **One file in → one `.docx` out** per conversion. The CLI can convert many `.md` files in one run (`md-to-docx ch1.md ch2.md -d ./out`), but it does **not** merge chapters into a single Markdown file or a single combined thesis document. To export one long Word file, combine your sources into one `.md` first (or use Pandoc’s multi-file input yourself), then run `md-to-docx thesis_full.md`.
+- **Overwrite flags are mutually exclusive.** Use only one of `--force`, `--skip-existing`, or `--rename-on-exists` in the same command. Combining them exits with an error.
+
 ## Markdown dialect
 
 - Default input is Pandoc **`markdown`** (Pandoc’s extended Markdown).
