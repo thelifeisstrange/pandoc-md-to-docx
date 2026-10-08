@@ -5,8 +5,8 @@ Thank you for helping improve **md-to-docx**. User-facing docs live in [README.m
 ## Development setup
 
 ```bash
-git clone https://github.com/thelifeisstrange/md-to-docx.git
-cd md-to-docx
+git clone https://github.com/thelifeisstrange/pandoc-md-to-docx.git
+cd pandoc-md-to-docx
 python3 -m venv venv
 source venv/bin/activate   # Windows: venv\Scripts\activate
 pip install -e ".[dev]"

@@ -5,6 +5,12 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.4] - 2025-10-08
+
+### Changed
+
+- GitHub repository URL updated to [thelifeisstrange/pandoc-md-to-docx](https://github.com/thelifeisstrange/pandoc-md-to-docx) in README and PyPI project metadata.
+
 ## [0.2.3] - 2025-10-08
 
 ### Changed
@@ -58,5 +64,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial single-script converter with interactive curses file picker.
 
-[0.2.0]: https://github.com/thelifeisstrange/md-to-docx/compare/v0.1.0...v0.2.0
-[0.1.0]: https://github.com/thelifeisstrange/md-to-docx/releases/tag/v0.1.0
+[0.2.0]: https://github.com/thelifeisstrange/pandoc-md-to-docx/compare/v0.1.0...v0.2.0
+[0.1.0]: https://github.com/thelifeisstrange/pandoc-md-to-docx/releases/tag/v0.1.0

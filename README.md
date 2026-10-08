@@ -2,11 +2,12 @@
 
 **Turn Markdown files into Microsoft Word documents—images, links, tables, and code included.**
 
-- **Source & issues:** [github.com/thelifeisstrange/md-to-docx](https://github.com/thelifeisstrange/md-to-docx)
+- **Source & issues:** [github.com/thelifeisstrange/pandoc-md-to-docx](https://github.com/thelifeisstrange/pandoc-md-to-docx)
 - **Install from PyPI:** `pip install "pandoc-md-to-docx[binary]"` — run the tool as **`md-to-docx`**
 
+[![CI](https://github.com/thelifeisstrange/pandoc-md-to-docx/actions/workflows/ci.yml/badge.svg)](https://github.com/thelifeisstrange/pandoc-md-to-docx/actions/workflows/ci.yml)
 [![PyPI version](https://img.shields.io/pypi/v/pandoc-md-to-docx)](https://pypi.org/project/pandoc-md-to-docx/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/thelifeisstrange/md-to-docx/blob/main/LICENSE)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/thelifeisstrange/pandoc-md-to-docx/blob/main/LICENSE)
 
 ---
 
@@ -64,7 +65,7 @@ For each input file, paths are resolved from **that file’s directory**, not fr
 
 HTTPS images are fetched when Pandoc can reach them. Markdown links become clickable links in Word.
 
-For edge cases and limits, see [Limitations](https://github.com/thelifeisstrange/md-to-docx/blob/main/docs/LIMITATIONS.md) on GitHub.
+For edge cases and limits, see [Limitations](https://github.com/thelifeisstrange/pandoc-md-to-docx/blob/main/docs/LIMITATIONS.md) on GitHub.
 
 ---
 
@@ -124,9 +125,9 @@ Use ↑/↓, **Space** to select, **Enter** to convert, **Esc** to cancel. On Wi
 
 ## Help and feedback
 
-- **Bug reports & feature requests:** [GitHub Issues](https://github.com/thelifeisstrange/md-to-docx/issues)
-- **Release history:** [CHANGELOG](https://github.com/thelifeisstrange/md-to-docx/blob/main/CHANGELOG.md)
+- **Bug reports & feature requests:** [GitHub Issues](https://github.com/thelifeisstrange/pandoc-md-to-docx/issues)
+- **Release history:** [CHANGELOG](https://github.com/thelifeisstrange/pandoc-md-to-docx/blob/main/CHANGELOG.md)
 
 ## License
 
-MIT — see [LICENSE](https://github.com/thelifeisstrange/md-to-docx/blob/main/LICENSE).
+MIT — see [LICENSE](https://github.com/thelifeisstrange/pandoc-md-to-docx/blob/main/LICENSE).

@@ -73,4 +73,4 @@ def test_cli_version():
         text=True,
     )
     assert proc.returncode == 0
-    assert "0.2.3" in proc.stdout
+    assert "0.2.4" in proc.stdout

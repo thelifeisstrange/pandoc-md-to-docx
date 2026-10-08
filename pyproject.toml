@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pandoc-md-to-docx"
-version = "0.2.3"
+version = "0.2.4"
 description = "CLI to convert Markdown to Word (.docx) with correct image paths, GFM support, and bundled Pandoc."
 readme = "README.md"
 requires-python = ">=3.9"
@@ -47,11 +47,11 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/thelifeisstrange/md-to-docx"
-Documentation = "https://github.com/thelifeisstrange/md-to-docx#readme"
-Repository = "https://github.com/thelifeisstrange/md-to-docx"
-Issues = "https://github.com/thelifeisstrange/md-to-docx/issues"
-Changelog = "https://github.com/thelifeisstrange/md-to-docx/blob/main/CHANGELOG.md"
+Homepage = "https://github.com/thelifeisstrange/pandoc-md-to-docx"
+Documentation = "https://github.com/thelifeisstrange/pandoc-md-to-docx#readme"
+Repository = "https://github.com/thelifeisstrange/pandoc-md-to-docx"
+Issues = "https://github.com/thelifeisstrange/pandoc-md-to-docx/issues"
+Changelog = "https://github.com/thelifeisstrange/pandoc-md-to-docx/blob/main/CHANGELOG.md"
 
 [project.scripts]
 md-to-docx = "md_to_docx.cli:main"
